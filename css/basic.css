@@ -1,0 +1,23 @@
+
+body {
+
+	font-family:  Arial,sans-serif;
+	color: black;
+	background-color: #F0E68C;
+}
+
+p {
+	font-size: 16px;
+}
+
+input {
+	font-size: 16px;
+}
+
+select {
+	font-size: 16px;
+}
+
+textarea {
+	font-size: 16px;
+}
