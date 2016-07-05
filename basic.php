@@ -3,33 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Assignment-1</title>
-	<link rel="stylesheet" href="basic.css">
+	<link rel="stylesheet" href="css\basic.css">
 </head>
 <body>
-	<h1>thank You! A representive will contact you soon</h1>
+	<img src="logo.jpg" alt="">
+
+	<h3> Thank You! A representive will contact you soon</h3>
 
 	<?php 	
 		$firstName = $_POST["firstname"];
 		$lastName = $_POST["lastname"];
-		$Radio = $_POST["radio"];
-		$contactInfo = $_POST["contact"];
+		//$fullName = $firstName.' '.$lastName;
+
+		$Medium = $_POST["medium"];
+		$contactInfo = $_POST["contactinfo"];
 		$City = $_POST["city"];
 		$Comments = $_POST["comments"];
 	
 
 	
 
-	print"<p>Information Submitted for: 
-	</p>"
+	print "<p>Information Submitted for: $firstName $lastName </p>";
 
-	<p>
-		You Phone No is:	</br>
-		and You are interested in living in 
-	</p>
 	
-	<p>
-		Our representative will reveiw your comments below:
-	</p>
+	print "<p>Your $Medium No is:<span class='textBlue'> $contactInfo </span></br> 
+			and You are interested in living in $City </p>";
+	
+	print "<p>Our representative will reveiw your comments below:</br>
+			<textarea name='comments' disabled='disabled' class='textareaDisable' cols='40' rows='10'> $Comments </textarea></p>";
+
 
 	?>
 </body>

@@ -6,8 +6,10 @@
 	<link rel="stylesheet" href="css\basic.css">
 </head>
 <body>
+
+	<img src="logo.jpg" alt="">
 	
-	<h1>Please sign up our guest list and our customer will contact you</h1>
+	<h3>Please sign up our guest list and our customer will contact you</h3>
 
 <form method="POST" action="basic.php">
 	<p>
@@ -20,13 +22,13 @@
 	</p>
 	<p>
 		Contact Information: 
-		<input type="radio" name="media" value="phone"> Phone 
-		<input type="radio" name="media" value="email"> Email </br>
-		<input type="text" name="firstname" size="40" />
+		<input type="radio" name="medium" value="phone"> Phone 
+		<input type="radio" name="medium" value="email"> Email </br>
+		<input type="text" name="contactinfo" size="40" />
 	</p>
 	<p>
 		City where you want to Reside: </br>
-		<select name="city" size="1" cols="40">
+		<select name="city" size="1" >
 			<option value="blank">-</option>
 			<option value="Delhi">Delhi</option>
 			<option value="Mumbai">Mumbai</option>

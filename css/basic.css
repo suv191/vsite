@@ -21,3 +21,12 @@ select {
 textarea {
 	font-size: 16px;
 }
+
+.textareaDisable {
+	background-color: lightgrey;
+}
+
+.textBlue {
+	color: blue;
+
+}
