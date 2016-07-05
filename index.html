@@ -9,45 +9,64 @@
 
 	<img src="logo.jpg" alt="">
 	
-	<h3>Please sign up our guest list and our customer will contact you</h3>
+	<div id="basicInfo">
+		<h4>Please sign up our guest list and our customer will contact you</h4>
 
-<form method="POST" action="basic.php">
-	<p>
-		First name:</br>
-		<input type="text" name="firstname" size="40" />
-	</p>
-	<p>
-		Last name:</br>
-		<input type="text" name="lastname" size="40" />
-	</p>
-	<p>
-		Contact Information: 
-		<input type="radio" name="medium" value="phone"> Phone 
-		<input type="radio" name="medium" value="email"> Email </br>
-		<input type="text" name="contactinfo" size="40" />
-	</p>
-	<p>
-		City where you want to Reside: </br>
-		<select name="city" size="1" >
-			<option value="blank">-</option>
-			<option value="Delhi">Delhi</option>
-			<option value="Mumbai">Mumbai</option>
-			<option value="Chennai">Chennai</option>
-			<option value="Kolkata">Kolkata</option>
-		</select></br>
-	</p>
-	<p>
-		Comments:</br>
-		<textarea name="comments"  cols="40" rows="10"></textarea>
-	</p>
-	<p>
-		<input type="submit" value="Submit Information">
-	</p>
+		<form method="POST" action="basic.php">
+			<p>
+				First name:</br>
+				<input type="text" name="firstname" size="40" />
+			</p>
+			<p>
+				Last name:</br>
+				<input type="text" name="lastname" size="40" />
+			</p>
+			<p>
+				Contact Information: 
+				<input type="radio" name="medium" value="phone" checked="checked"> Phone 
+				<input type="radio" name="medium" value="email"> Email </br>
+				<input type="text" name="contactinfo" size="40" />
+			</p>
+			<p>
+				City where you want to Reside: </br>
+				<select name="city" size="1" >
+					<option value="blank">-</option>
+					<option value="Delhi">Delhi</option>
+					<option value="Mumbai">Mumbai</option>
+					<option value="Chennai">Chennai</option>
+					<option value="Kolkata">Kolkata</option>
+				</select></br>
+			</p>
+			<p>
+				Comments:</br>
+				<textarea name="comments"  cols="40" rows="10"></textarea>
+			</p>
+			<p>
+				<input type="submit" value="Submit Information">
+			</p>
 
 
-</form>
+		</form>
 	
+	</div>
+	<div id="mortgage">
 
+		<h4>Mortgage Calculator</h4>
+		<form method="POST" action="payment.php">		
+			<table>
+				<tr>
+					<td>Amount Financed </td>
+					<td><input type="text" name="principal" size="10" /></td>
+				</tr>
+				<tr>
+					<td>Interest Rate </td>
+					<td><input type="text" name="interest" size="10"></td>
+				</tr>
+			</table>
+			<p><input type="submit" value="Calculate Payment"></p>
+		</form>
+		
+	</div>
 
 </body>
 </html>

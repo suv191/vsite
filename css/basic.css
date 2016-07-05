@@ -28,5 +28,24 @@ textarea {
 
 .textBlue {
 	color: blue;
+}
 
+#basicInfo {
+	position: absolute;
+	left: 10px;
+	top: 100px;
+	width: 550px;
+	height: 550px;
+	padding: 10px;
+	background-color: lightgreen;
+}
+
+#mortgage {
+	position: absolute;
+	left: 600px;
+	top: 100px;
+	width: 300px;
+	height: 550px;
+	padding: 10px;
+	background-color: lightgreen;
 }
