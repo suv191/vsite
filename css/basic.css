@@ -30,12 +30,16 @@ textarea {
 	color: blue;
 }
 
+.errmsg {
+	color: red;
+}
+
 #basicInfo {
 	position: absolute;
 	left: 10px;
 	top: 100px;
 	width: 550px;
-	height: 550px;
+	height: 600px;
 	padding: 10px;
 	background-color: lightgreen;
 }
@@ -45,7 +49,7 @@ textarea {
 	left: 600px;
 	top: 100px;
 	width: 300px;
-	height: 550px;
+	height: 600px;
 	padding: 10px;
 	background-color: lightgreen;
 }

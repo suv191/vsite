@@ -6,7 +6,9 @@
 	<link rel="stylesheet" href="css\basic.css">
 </head>
 <body>
-	<img src="logo.jpg" alt="">
+	<div>
+		<a href="index.html"><img src="logo.jpg" alt=""></a>
+	</div>
 
 	<div id="basicInfo">
 		<h3> Thank You! A representive will contact you soon</h3>

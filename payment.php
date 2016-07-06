@@ -6,7 +6,9 @@
 	<link rel="stylesheet" href="css\basic.css">
 </head>
 <body>
-	<img src="logo.jpg" alt="">
+	<div>
+		<a href="index.html"><img src="logo.jpg" alt=""></a>
+	</div>
 
 	<div id="basicInfo">
 		<h4>Mortgage Calculator</h4>
@@ -15,41 +17,40 @@
 			$Principal = $_POST["principal"];
 			$Interest = $_POST["interest"];
 
-			$Payment = ($Principal * $Interest) / 12 ;
+			$Payment = ($Principal * ($Interest / 100)) / 12 ;
 			
+			$msg = "";
+			$errCount = 0;
+
 			if (empty($Principal)) {
-				print "You must enter a Amount";
-				print "<br /> Go back try again";
-				print "</body></html>";
-				exit;
+				$msg .= "<br><span class='errmsg'>You must enter a Amount<span>";
+				$errCount++;
 			}
 			else {
 				if (!is_numeric($Principal)) {
-					print "The Amount must be numeric";
-					print "<br /> Go back try again";
-					print "</body></html>";
-					exit;
+					$msg .= "<br><span class='errmsg'>The Amount must be numeric<span>";
+					$errCount++;
 				}
 			}
 
 			if (empty($Interest)) {
-				print "You must enter a Interest";
-				print "<br /> Go back try again";
-				print "</body></html>";
-				exit;
+				$msg .= "<br><span class='errmsg'>You must enter a Interest<span>";
+				$errCount++;
 			}
 			elseif (!is_numeric($Interest)) {
-				print "The Interest must be numeric";
-				print "<br /> Go back try again";
-				print "</body></html>";
-				exit;
+				$msg .= "<br><span class='errmsg'>The Interest must be numeric<span>";
+				$errCount++;
 			}
 
+		if ($errCount>0) {
+			# code...
+			print "$msg";
+		} else {
+			# code...
+			print "<p>If you finance Rs.$Principal at an interest rate of $Interest% ...</p>";
+			print "<p>Your monthly payment will be Rs.".number_format($Payment,2)."</p>";
 		
-		print "<p>If you finance $Principal at an interest rate of $Interest% ...</p>";
-
-		
-		print "<p>Your monthly payment will be ".round($Payment,2)."</p>";
+		}
 		
 		
 		?>
