@@ -67,7 +67,7 @@
 				<textarea name="comments"  cols="40" rows="10"></textarea>
 			</p>
 			<p>
-				<input type="submit" value="Submit Information">
+				<input type="submit" class="btn" value="Submit Information">
 			</p>
 		</form>
 
@@ -88,7 +88,7 @@
 					<td><input type="text" name="interest" size="10"></td>
 				</tr>
 			</table>
-			<p><input type="submit" value="Calculate Payment"></p>
+			<p><input type="submit" class="btn" value="Calculate Payment"></p>
 		</form>
 		
 	</div>
