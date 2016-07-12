@@ -19,6 +19,17 @@
 			vaulted ceilings and huge bay windows. Large Master Suites featueing "His" and "Her" bathrooms.
 		</p>
 	</div>
+	<div id="sideBar">
+		<?php 
+			# Reading from a directory
+			$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];// gets the root directory
+
+			$dirName = $DOCUMENT_ROOT.'vsite/asignment4/'.'house_images'; //get the directory
+
+			$dirHandle = opendir($dirName); // handler to the directory
+
+		 ?>
+	</div>
 	<div id="search">
 		<p>
 			<h4>Enter City: <input type="text" name="citySearch" size="40">
