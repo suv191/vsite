@@ -1,4 +1,4 @@
-City: Mumbai
+City: Pune
 Price: Rs.1,60,00,000
 Bedrooms: 5
 Baths: 3 

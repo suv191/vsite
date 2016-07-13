@@ -11,7 +11,7 @@
 	</div>
 	<div id="mainPage">
 		<h2>Featured Home!</h2>
-		<p><img src="house_images/main.jpg" alt=""></p>
+		<p><img src="images/main.jpg" alt=""></p>
 		<p><h4>As Far as the Eye Can See!</h4></p>
 		<p>
 			Spectacular Ocean and Canyon Views!!</br> 
@@ -20,24 +20,53 @@
 		</p>
 	</div>
 	<div id="sideBar">
+		<h2>Our Realtors</h2>
 		<?php 
 			# Reading from a directory
 			$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];// gets the root directory
 
-			$dirName = $DOCUMENT_ROOT.'vsite/asignment4/'.'house_images'; //get the directory
+			$dirName = $DOCUMENT_ROOT.'vsite/asignment4/'.'realtors'; //get the directory
 
 			$dirHandle = opendir($dirName); // handler to the directory
+
+			if ($dirHandle) {
+				$houseFiles =  array(); //creates new empty array
+				while (false !==($file = readdir($dirHandle))) {
+					if ($file != '.' && $file != '..') {
+						array_push($houseFiles, $file);
+					}
+				}
+			}
+
+			sort($houseFiles);
+
+			foreach ($houseFiles as $element) {
+				$imagename = 'realtors/'.$element;
+				print "<p><img src='".$imagename."'>";
+				$pos = stripos($element, '.');
+				if ($pos === false) {
+					# code...
+				}
+				else {
+					$realtorName = substr($element, 0, $pos);
+					$realtorName = trim($realtorName);
+					$realtorName = ucfirst($realtorName);
+					print "<br/>".$realtorName."</p>\n";
+				}
+				
+			}
 
 		 ?>
 	</div>
 	<div id="search">
-		<p>
-			<h4>Enter City: <input type="text" name="citySearch" size="40">
-			(Leave blank to find all houses listed)</h4>
-		</p>
-		<p><input type="submit" class="btn" value="Find Homes"></p>
-		<p>Note: We represent homes in the following cities: Mumbai, Chennai, Kolkata, Delhi, Pune, Goa, Digha</p>
-		
+		<form method="POST" action="asignment4.php">
+			<p>
+				<h4>Enter City: <input type="text" name="citySearch" size="40">
+				(Leave blank to find all houses listed)</h4>
+			</p>
+			<p><input type="submit" class="btn" value="Find Homes"></p>
+			<p>Note: We represent homes in the following cities: Mumbai, Chennai, Kolkata, Delhi, Pune, Goa, Digha</p>
+		</form>
 	</div>
 	<div id="link">
 	<p>
