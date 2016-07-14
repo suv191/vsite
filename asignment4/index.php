@@ -22,40 +22,7 @@
 	<div id="sideBar">
 		<h2>Our Realtors</h2>
 		<?php 
-			# Reading from a directory
-			$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];// gets the root directory
-
-			$dirName = $DOCUMENT_ROOT.'vsite/asignment4/'.'realtors'; //get the directory
-
-			$dirHandle = opendir($dirName); // handler to the directory
-
-			if ($dirHandle) {
-				$houseFiles =  array(); //creates new empty array
-				while (false !==($file = readdir($dirHandle))) {
-					if ($file != '.' && $file != '..') {
-						array_push($houseFiles, $file);
-					}
-				}
-			}
-
-			sort($houseFiles);
-
-			foreach ($houseFiles as $element) {
-				$imagename = 'realtors/'.$element;
-				print "<p><img src='".$imagename."'>";
-				$pos = stripos($element, '.');
-				if ($pos === false) {
-					# code...
-				}
-				else {
-					$realtorName = substr($element, 0, $pos);
-					$realtorName = trim($realtorName);
-					$realtorName = ucfirst($realtorName);
-					print "<br/>".$realtorName."</p>\n";
-				}
-				
-			}
-
+			displayRealtors();
 		 ?>
 	</div>
 	<div id="search">
@@ -76,3 +43,29 @@
 	
 </body>
 </html>
+
+<?php 
+	function displayRealtors() {
+		# Reading from a directory
+			$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];// gets the root directory
+
+			$dirName = $DOCUMENT_ROOT.'vsite/asignment4/'.'realtors'; //get the directory
+
+			$dirHandle = opendir($dirName); // handler to the directory
+
+			if ($dirHandle) {
+				
+				while (false !==($file = readdir($dirHandle))) {
+					if ($file != '.' && $file != '..') {
+						print "<p><img src='realtors/".$file."'>";
+						$pos = stripos($file, '.');
+						$realtorName = substr($file, 0, $pos);
+						$realtorName = trim($realtorName);
+						$realtorName = ucfirst($realtorName);
+						print "<br/>".$realtorName."</p>\n";
+					}
+				}
+			}
+	}
+
+ ?>
