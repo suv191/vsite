@@ -10,18 +10,6 @@
 		<a href="index.php"><img src="logo.jpg" alt=""></a>
 	</div>
 	
-	<?php 
-		# Reading from a file
-		$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];// gets the root directory
-
-		$fileName = $DOCUMENT_ROOT.'vsite/asignment3/data/'.'cities.txt'; //get the file
-
-		$linesInFile = count(file($fileName)); //counts the no. of lines in the file
-
-		$fp = fopen($fileName, 'r'); // open the file for reading 'r'
-
-
-	 ?>
 	
 	<div id="basicInfo">
 		<h4>Please sign up our guest list and our customer care will contact you</h4>
@@ -47,16 +35,35 @@
 					<option value="blank">-</option>
 					<?php 
 
-						for ($ii=1; $ii <= $linesInFile; $ii++) { 
-							# code...
-							$line = fgets($fp); // Reads one line from the file
-							$City = trim($line);
+						include "validation_connection.php";
 
-							print '<option value="'.$City.'">'.$ii.' : '.$City.'</option>';
+						$outputDisplay = '';
+
+
+						$sql_statement  = "SELECT DISTINCT name ";
+						$sql_statement .= "FROM city ";
+						$sql_statement .= "ORDER BY name ";
+
+						$sqlResults = selectResults($sql_statement);
+
+						$error_or_rows = $sqlResults[0];
+
+						if (substr($error_or_rows, 0 , 5) == 'ERROR')
+						{
+							print "<br />Error on DB";
+						} else {
+
+							for ($ii = 1; $ii <= $error_or_rows; $ii++)
+							{
+								$name  = $sqlResults [$ii] ['name'];
+
+								//print "<br>N: $name";
+
+								$outputDisplay .= "<option value='".$name."'>".$ii.":".$name."</option>";
+							}
 						}
 
-						fclose($fp);
-
+						print $outputDisplay;
 
 					 ?>
 					
@@ -71,9 +78,10 @@
 			</p>
 		</form>
 
-		For Admin Use Only: <a href="asignment3.php">View Guestbook</a>
+		For Admin Use Only: <a href="view_client.php">View Guestbook</a>
 	
 	</div>
+
 	<div id="mortgage">
 
 		<h4>Mortgage Calculator</h4>

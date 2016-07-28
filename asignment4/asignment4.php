@@ -15,7 +15,8 @@
 		if (empty($find_city)) {
 			$find_city = "ALL";
 		}
-		if ($find_city = "ALL") {
+
+		if ($find_city == "ALL") {
 			print "<h2> Current Listing</h2>";
 		}
 		else {
