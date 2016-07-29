@@ -1,0 +1,4 @@
+suv|pal|phone|46354354354|Kolkata|07-08-2016|none|
+sid|roy|email|sid@sid.com|Delhi|07-08-2016|n/a|
+kuntal|catwa|phone|7657665|Kolkata|07-08-2016|katwa|
+sdf|sdfs|phone|323|blank|07-08-2016|sdf|
