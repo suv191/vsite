@@ -18,7 +18,7 @@ print  "<span style=\"font-family: Arial, Helvetica, sans-serif; font-size: 18px
 
 <?php
 
-$db = mysql_connect('localhost','root','password');
+$db = mysql_connect('localhost','root','');
 
 if (!$db)
 {
@@ -93,16 +93,14 @@ $estate_all_sql = "
 drop table realtor;
 
 create table realtor
- (rid varchar(11) primary key,
- firstname varchar(20) not null,
+ (firstname varchar(20) not null,
  img_file varchar(20) not null);
 ;
 
 drop table homes;
 
 create table homes
-  (hid varchar(11) primary key,
-  city varchar(20) null,
+  (city varchar(20) null,
   bedrooms int null,
   baths int null,
   price numeric(11,2) null,
@@ -116,56 +114,83 @@ create table homes
 drop table client;
 
 create table client
- (cid int(11) primary key,
- firstname varchar(20) null,
+ (firstname varchar(20) null,
  lastname varchar(20) null,
  contact_by varchar(7) null,
  phone_email varchar(20) null,
  city varchar(20) null,
- contact_date date null,
+ contact_date varchar(20) null,
  comments varchar(100) null);
  ;
 
+drop table city;
+
+create table city
+ (name varchar(20) not null);
+;
+
+insert into city
+values('Delhi')
+;
+insert into city
+values('Chennai')
+;
+insert into city
+values('Kolkata')
+;
+insert into city
+values('Mumbai')
+;
+insert into city
+values('Pune')
+;
+insert into city
+values('Goa')
+;
+insert into city
+values('Digha')
+;
+
 
 
 insert into realtor
-values('1', 'Lara', 'lara.jpg')
+values('Lara', 'lara.jpg')
 ;
 insert into realtor
-values ('2', 'Noah', 'n.jpg')
+values ('Noah', 'n.jpg')
 ;
 insert into realtor
-values('3', 'Candice', 'pretty-women.jpg')
+values('Candice', 'pretty-women.jpg')
 ;
 insert into realtor
-values('4', 'Peter', 'w01.jpg')
+values('Peter', 'w01.jpg')
 ;
 insert into realtor
-values('5', 'Lui', 'women.jpg')
+values('Lui', 'women.jpg')
 ;
 
 
 
 insert into homes
-values('1', 'Chennai', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'chennai.jpg')
+values('Chennai', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'chennai.jpg')
 ;
 insert into homes
-values('2', 'Delhi', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'delhi.jpg')
+values('Delhi', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'delhi.jpg')
 ;
 insert into homes
-values('3', 'Digha', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'digha.jpg')
+values('Digha', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'digha.jpg')
 ;
 insert into homes
-values('4', 'Goa', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'goa.jpg')
+values('Goa', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'goa.jpg')
 ;
 insert into homes
-values('5', 'Kolkata', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'kolkata.jpg')
+values('Kolkata', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'kolkata.jpg')
 ;
 insert into homes
-values('6', 'Mumbai', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'mumbai.jpg')
+values('Mumbai', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'mumbai.jpg')
 ;
 insert into homes
-values('7', 'Pune', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'pune.jpg')
+values('Pune', '5','3', '16000000', '3000', 'abc', 'Fantastic Home with a Fantastic View!', 'You will never get tired of watching the sunset from your living room sofa or the sunrise from your back porch with a view overlooking the gorgeous coral canyon. Once in a lifetime opportunity!', 'pune.jpg')
 ;
 
 

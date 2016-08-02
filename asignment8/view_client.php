@@ -2,13 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Assignment-1</title>
+	<title></title>
 	<link rel="stylesheet" href="css\basic.css">
 </head>
 <body>
-	<div>
-		<a href="index.php"><img src="logo.jpg" alt=""></a>
-	</div>
 
 	<div id="DetailInfo">
 		

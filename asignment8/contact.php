@@ -4,6 +4,138 @@
 	<meta charset="UTF-8">
 	<title>Assignment-1</title>
 	<link rel="stylesheet" href="css\basic.css">
+
+	<script>
+
+	var xmlhttp = false;
+
+	if (window.XMLHttpRequest) {
+	  xmlhttp = new XMLHttpRequest();
+	} else if (window.ActiveXObject) {
+	  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+			
+	function ajaxCallFunction()
+	{
+
+		var errMsg = doValidation();
+
+		if ( errMsg == "") 
+		{
+			//errMsg = "success";
+			//document.getElementById('mortgage').innerHTML = errMsg;
+			
+			if(xmlhttp)
+			{
+
+				xmlhttp.open("POST","basic.php");
+
+				xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+	        	xmlhttp.onreadystatechange = function() 
+	        	{
+	           		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+	            	{
+	                	document.getElementById("mortgage").innerHTML = xmlhttp.responseText;
+	               		document.getElementById("mortgage").style.visibility = 'visible';
+
+	            	}
+	        	}
+
+	        	var firstname = document.getElementById('firstname').value;
+				var	lastname = document.getElementById('lastname').value;
+				var	medium = document.getElementById('medium').value;
+				var	contactinfo = document.getElementById('contactinfo').value;
+				var	city = document.getElementById('city').value;
+				var	comments = document.getElementById('comments').value;
+
+				var full_data = firstname + '|' + lastname + '|' + medium + '|' + contactinfo + '|' + city + '|' + comments + '|';
+				
+//					alert (full_data);
+
+				xmlhttp.send("full_data=" + full_data);
+
+			}
+
+		}
+		else
+		{
+
+			document.getElementById('mortgage').innerHTML = errMsg;
+	        document.getElementById("mortgage").style.visibility = 'visible';
+
+
+		}
+
+		return false;
+
+	}
+
+
+	function ajaxViewFunction()
+	{
+
+		if(xmlhttp)
+		{
+
+			xmlhttp.open("POST","view_client.php");
+
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+	       	xmlhttp.onreadystatechange = function() 
+	       	{
+	       		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+	           	{
+	               	document.getElementById("mortgage").innerHTML = xmlhttp.responseText;
+	               	document.getElementById("mortgage").style.visibility = 'visible';
+
+	           	}
+	       	}
+
+	        var data = 'dummy';	
+
+			xmlhttp.send("data=" + data);
+
+		}
+
+	return false;
+	}
+
+	function doValidation()
+	{
+
+		var errMsg = "";
+		//alert ("doValidation :")
+		var firstname = document.getElementById('firstname').value;
+		var lastname = document.getElementById('lastname').value;
+		var phoneOrEmail = document.getElementById('contactinfo').value;
+		var city = document.getElementById('city').value;
+
+		if ( firstname == null || firstname == "")
+		{
+			errMsg += "<br /><span class='errmsg'>You must enter a First Name<span>";
+		}
+		if ( lastname == null || lastname == "")
+		{
+			errMsg += "<br /><span class='errmsg'>You must enter a Last Name<span>";
+		}
+		if ( phoneOrEmail == null || phoneOrEmail == "")
+		{
+			errMsg += "<br /><span class='errmsg'>You must enter a " + phoneOrEmail + "<span>";
+		}
+		if ( city == null || city == "")
+		{
+			errMsg += "<br /><span class='errmsg'>You must select a City<span>";
+		}
+
+		return errMsg;
+	}
+
+
+
+
+	</script>
 </head>
 <body>
 	<div>
@@ -14,24 +146,23 @@
 	<div id="basicInfo">
 		<h4>Please sign up our guest list and our customer care will contact you</h4>
 
-		<form method="POST" action="basic.php">
 			<p>
 				First name:</br>
-				<input type="text" name="firstname" size="40" />
+				<input type="text" name="firstname" id="firstname" size="40" />
 			</p>
 			<p>
 				Last name:</br>
-				<input type="text" name="lastname" size="40" />
+				<input type="text" name="lastname" id="lastname" size="40" />
 			</p>
 			<p>
 				Contact Information: 
-				<input type="radio" name="medium" value="phone" checked="checked"> Phone 
-				<input type="radio" name="medium" value="email"> Email </br>
-				<input type="text" name="contactinfo" size="40" />
+				<input type="radio" name="medium" id="medium" value="phone" checked="checked"> Phone 
+				<input type="radio" name="medium" id="medium" value="email"> Email </br>
+				<input type="text" name="contactinfo" id="contactinfo" size="40" />
 			</p>
 			<p>
 				City where you want to Reside: </br>
-				<select name="city" size="1" >
+				<select name="city" id="city" size="1" >
 					<option value="blank">-</option>
 					<?php 
 
@@ -71,33 +202,19 @@
 			</p>
 			<p>
 				Comments:</br>
-				<textarea name="comments"  cols="40" rows="10"></textarea>
+				<textarea name="comments" id="comments"  cols="40" rows="10"></textarea>
 			</p>
 			<p>
-				<input type="submit" class="btn" value="Submit Information">
+				<input type="submit" class="btn" value="Submit Information" onclick="ajaxCallFunction();">
 			</p>
-		</form>
+		
 
-		For Admin Use Only: <a href="view_client.php">View Guestbook</a>
+		For Admin Use Only: <a href="" onclick="return ajaxViewFunction();">View Guestbook</a>
 	
 	</div>
 
 	<div id="mortgage">
 
-		<h4>Mortgage Calculator</h4>
-		<form method="POST" action="payment.php">		
-			<table>
-				<tr>
-					<td>Amount Financed </td>
-					<td><input type="text" name="principal" size="10" /></td>
-				</tr>
-				<tr>
-					<td>Interest Rate </td>
-					<td><input type="text" name="interest" size="10"></td>
-				</tr>
-			</table>
-			<p><input type="submit" class="btn" value="Calculate Payment"></p>
-		</form>
 		
 	</div>
 

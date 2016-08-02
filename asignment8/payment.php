@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Assignment-1</title>
-	<link rel="stylesheet" href="css\basic.css">
-</head>
-<body>
-	<div>
-		<a href="index.php"><img src="logo.jpg" alt=""></a>
-	</div>
 
-	<div id="basicInfo">
-		<h4>Mortgage Calculator</h4>
 
 		<?php 	
-			$Principal = $_POST["principal"];
-			$Interest = $_POST["interest"];
+			$Amount = $_POST["data"];
 
-			$Payment = ($Principal * ($Interest / 100)) / 12 ;
+			list($Principal, $Interest) = explode('|', $Amount);
+
+			$monthly_payment = ($Principal * ($Interest / 100)) / 12 ;
 			
-			$msg = "";
+			$msg = "ERROR: ";
 			$errCount = 0;
 
 			if (empty($Principal)) {
@@ -44,16 +32,13 @@
 
 		if ($errCount>0) {
 			# code...
-			print "$msg";
+			print $msg;
 		} else {
 			# code...
-			print "<p>If you finance Rs.$Principal at an interest rate of $Interest% ...</p>";
-			print "<p>Your monthly payment will be Rs.".number_format($Payment,2)."</p>";
+			$final = number_format($monthly_payment,2); 
+			print $final;
 		
 		}
 		
 		
 		?>
-	</div>
-</body>
-</html>

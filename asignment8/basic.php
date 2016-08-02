@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Assignment-1</title>
-	<link rel="stylesheet" href="css\basic.css">
-
-</head>
-<body>
-	<div>
-		<a href="index.php"><img src="logo.jpg" alt=""></a>
-	</div>
-
-	<div id="basicInfo">
-		
-
 		<?php 
 
 		//***************************************
@@ -21,44 +5,16 @@
 		//***************************************
 
 
-			$firstName = $_POST["firstname"];
-			$lastName = $_POST["lastname"];
-			
-			$contactChoice = $_POST["medium"];
+			$full_data = $_POST['full_data'];
 
-			$phoneOrMail = $_POST["contactinfo"];
-
-			$City = $_POST["city"];
-
-			$Comments = $_POST["comments"];
-
-
-		//***************************************
-		// Validate Entries
-		//***************************************
-
-			include 'validation_connection.php';
-			
-			$rtnmsg = doValidation($firstName, $lastName, $phoneOrMail, $City, $contactChoice);
-
-
-			if ($rtnmsg == '') 
-			{
-
-				//print " <br><span class='errmsg'>You haven't enter anything<span>";
-			}
-			else
-			{
-			 	print "$rtnmsg";
-			 	print "<br /><br />Go BACK and try again!";
-				print "</body></html>";
-				exit;
-			}
-
-
+			list($firstName, $lastName, $contactChoice, $phoneOrMail, $City, $Comments) = explode( '|', $full_data);
+		
+		
 		//***************************************
 		//Add Client Information to database
 		//***************************************
+
+			include 'validation_connection.php';
 
 			$statement  = "INSERT INTO client ";
 			$statement .= "(firstname, lastname, ";
@@ -99,6 +55,3 @@
 			print "</textarea></p>";
 	
 		?>
-	</div>
-</body>
-</html>

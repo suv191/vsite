@@ -12,7 +12,7 @@
 	  top: 10px;
 	  left: 10px;
 	  width: 200px;
-	  height: 100px;
+	  height: 110px;
 	  padding: 5px;
 	  background-color: #0C4683;
 	  font-size: 18px;
@@ -23,7 +23,7 @@
 	</style>
 	<script>
 
-	function showRealtorDetail(element)
+	function showRealtorDetail(element,fullData)
 	{
 		var showDiv = document.getElementById('realtorDetail');
 
@@ -34,6 +34,14 @@
 		showDiv.style.top = y + 100 + 'px';
 
 		//alert (x);
+		var full_data = fullData.split('|');
+
+		var str = "<p><b><span> " + full_data[0] + "</span></b></p>";
+			str += "<p>" + full_data[1] + "<br>";
+			str += full_data[2] + "</p>";
+
+		showDiv.innerHTML = str;
+
 		
 		showDiv.style.visibility = 'visible';
 
@@ -82,7 +90,7 @@
 	</div>
 	<div id="link">
 	<p>
-		<a href="contact.php">Guest Book / Mortgage Calculator</a>
+		<a href="contact.php">Guest Book </a> / <a href="mcalc.php"> Mortgage Calculator</a>
 	</p>
 	</div>
 
@@ -98,7 +106,7 @@
 	{
 		# Reading from a table
 			
-		$statement = "SELECT firstname,img_file ";
+		$statement = "SELECT * ";
 		$statement .= "FROM realtor ";
 		$statement .= "ORDER BY firstname ";
 
@@ -119,7 +127,14 @@
 				$firstname = $sqlResults[$i]['firstname'];
 				$image_file = $sqlResults[$i]['img_file'];
 
-				print "<p><img src='realtors/".$image_file."' onmouseover='showRealtorDetail(this);' onmouseout='hideRealtorDetail();' >";
+				$lastname = $sqlResults[$i]['lastname'];
+				$phone = $sqlResults[$i]['phone'];
+				$email = $sqlResults[$i]['email'];
+
+				$full_data = $firstname.' '.$lastname.'|'.$phone.'|'.$email.'|';
+
+
+				print "<p><img src='realtors/".$image_file."' onmouseover='showRealtorDetail(this, \"".$full_data."\");' onmouseout='hideRealtorDetail();' >";
 
 				print "<br />".$firstname."</p>\n";
 			}
