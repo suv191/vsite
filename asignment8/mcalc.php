@@ -29,14 +29,19 @@
 	       		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
 	           	{
 	               	var returnedData = xmlhttp.responseText;
-	               	if (returnedData.substr(0,5) == 'ERROR')
+	               	var str = returnedData.substr(6, 5);
+	               	if (returnedData.substr(6,5) == 'ERROR')
 					  {
 					  	var errorDiv = document.getElementById('mortgage');
-					  	errorDiv.innerHTML = "ERROR ON DATABASE";
+	               		document.getElementById("mortgage").style.visibility = 'visible';
+
+					  	errorDiv.innerHTML = returnedData;
+					  	//alert (xmlhttp.responseText);
 					  } else {
+	               		document.getElementById("mortgage").style.visibility = 'hidden';
+
 					    monthlypayment = document.getElementById('result');
 					    monthlypayment.value = returnedData;
-					    
 					  }
 
 	               	//alert (xmlhttp.responseText);
@@ -92,7 +97,7 @@
 		
 		
 	</div>
-<div id="mortgage" style="color: red;"></div>
+<div id="mortgage" ></div>
 
 
 </body>

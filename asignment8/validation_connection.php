@@ -11,7 +11,7 @@
 		$DBHOST = "localhost";
 		$DBNAME = "test";
 		$DBUSER = "root";
-		$DBPASSWORD = "";
+		$DBPASSWORD = "password";
 		 
 		$sLink = mysqli_connect($DBHOST,$DBUSER,$DBPASSWORD,$DBNAME) or die('Connection with MySql Server failed');
 		
